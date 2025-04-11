@@ -1,36 +1,54 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <head>
-        <title>{% block page_name %}{{ page_name }}{% endblock %}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-</head>
-
-<body>
-    <!-- The below tag is using Bulma CSS. Try replacing line 14 with line 13. -->
-    <!-- <div class="has-text-success-dark is-size-4  has-text-weight-medium"> -->
-    <div>
-        <a href="{{ url_for('home') }}">
-            Home
-        </a>
-        &nbsp;&nbsp;
-        <a href="{{ url_for('all_pages') }}">
-            Pages
-        </a>
-        &nbsp;&nbsp;
-        <a href="{{ url_for('about') }}">
-            About
-        </a>
-    </div>
-
-    <!-- The below tag is using Bulma CSS. Try replacing line 30 with line 29. -->
-    <!-- <div class="content"> -->
-    <div>
-        {% block content %}{{ page_content }}{% endblock %}
-    </div>
-
-</body>
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page_name %}{{ page_name }}{% endblock %}</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Import Bulma CSS Framework -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <!-- Header with Logo -->
+    <header>
+      <nav>
+        <div class="nav-brand">
+          <a href="{{ url_for('home') }}" class="logo">
+            <i class="fas fa-cat"></i> <span>Cats on Skis</span>
+          </a>
+        </div>
+        <div class="nav-links">
+          <a href="{{ url_for('home') }}" {% if request.endpoint == 'home' %}class="active"{% endif %}>
+            <i class="fas fa-home"></i> Home
+          </a>
+          <a href="{{ url_for('all_pages') }}" {% if request.endpoint == 'pages' %}class="active"{% endif %}>
+            <i class="fas fa-book"></i> Pages
+          </a>
+          <a href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}class="active"{% endif %}>
+            <i class="fas fa-info-circle"></i> About
+          </a>
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Main Content Area -->
+    <main>
+      {% block content %}{{ page_content }}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+      <p>Cats on Skis &copy; 2025 | The ultimate resource for feline winter sports</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
+  </body>
 </html>

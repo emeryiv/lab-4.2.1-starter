@@ -1,21 +1,213 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap');
+
+/* Import Bulma CSS Framework */
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 
-html {
-    margin: 25px;
-    background-color: lightblue;
-    font-family: verdana;
-    font-size: 20px;
+/* Color Variables */
+:root {
+  --primary: #3273dc;     /* Vibrant blue for primary elements */
+  --secondary: #00d1b2;   /* Teal for accents */
+  --dark: #363636;        /* Dark gray for text */
+  --light: #f5f7fa;       /* Light gray-blue for backgrounds */
+  --highlight: #ffdd57;   /* Yellow for highlights */
+  --content-bg: #ffffff;  /* White for content areas */
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Base Styles */
+html {
+  margin: 0;
+  background-color: var(--light);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', Verdana, sans-serif;
+  font-size: 16px;
+  color: var(--dark);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Typography */
 h3 {
-    margin-top: 20px;
-    background-color: lightblue;
-    font-size: 30px;
-    font-weight: bolder;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 1.5rem;
+  color: var(--primary);
+  font-size: 1.75rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--secondary);
 }
 
 p {
-    margin-top: 10px;
-    margin-left: 15px;
-    background-color: lightblue;
+  margin-top: 1rem;
+  margin-left: 0;
+  padding: 0.75rem 0;
+  background-color: transparent;
+}
+
+/* Header and Navigation */
+header {
+  background-color: var(--content-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+nav a {
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  color: var(--dark);
+  background-color: transparent;
+  margin-right: 0.75rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav a:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+nav a.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Main Content Area */
+main {
+  background-color: var(--content-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Lists Styling */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 0.75rem;
+}
+
+ul li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: var(--light);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--dark);
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+ul li a:hover {
+  background-color: #e8f0fe;
+  border-left: 3px solid var(--primary);
+  transform: translateX(5px);
+  color: var(--primary);
+}
+
+/* Image Styling */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* About Page Styling */
+p img {
+  display: block;
+  margin: 1.5rem auto;
+}
+
+/* Footer */
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--content-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  
+  nav a {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  main {
+    padding: 1.5rem;
+  }
+}
+
+/* Animation for Page Transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
 }

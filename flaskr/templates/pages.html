@@ -5,12 +5,46 @@ Wiki Pages
 {% endblock %}
 
 {% block content %}
-<h3>Pages contained in this Wiki</h3>
-<ul>
-    {% for page in all_pages %}
-    <li><a href="{{ url_for('pages', name=page) }}">{{page}}</a></li>
-    {% endfor %}
-</ul>
+<div class="page-header">
+  <h3>Pages contained in this Wiki</h3>
+  <p class="subtitle">Explore our collection of cat skiing knowledge</p>
+</div>
 
+<div class="search-box">
+  <input type="text" id="pageSearch" placeholder="Search pages...">
+  <i class="fas fa-search"></i>
+</div>
+
+<div class="pages-grid">
+  {% for page in all_pages %}
+  <div class="page-card">
+    <a href="{{ url_for('pages', name=page) }}">
+      <div class="page-icon">
+        <i class="fas fa-snowflake"></i>
+      </div>
+      <div class="page-title">{{page}}</div>
+      <div class="page-arrow">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+  // Simple search functionality
+  document.getElementById('pageSearch').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const pageCards = document.querySelectorAll('.page-card');
+    
+    pageCards.forEach(card => {
+      const title = card.querySelector('.page-title').textContent.toLowerCase();
+      if (title.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script>
 {% endblock %}
-
